@@ -1,0 +1,25 @@
+<div [formGroup]="formGroup">
+  Name:
+  <input type="text" name="name" formControlName="name" /> <br />
+
+  Age:
+  <input type="text" name="age" formControlName="age" /> <br />
+
+  Address:
+
+  <button (click)="addAddress()">+</button>
+  <div formArrayName="address">
+    <div
+      *ngFor="let control of formGroup.controls['address'].controls"
+      [formGroup]="control"
+    >
+      <input type="text" name="fullAddress" formControlName="fullAddress" />
+      <br />
+    </div>
+  </div>
+
+  Email:
+  <input type="text" name="email" formControlName="email" /> <br />
+</div>
+
+<button (click)="saveDetails()">Add Or Update</button>

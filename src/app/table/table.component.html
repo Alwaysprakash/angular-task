@@ -1,0 +1,28 @@
+<table border="1" *ngIf="list.length > 0">
+  <thead>
+    <tr>
+      <th *ngFor="let col of columns">
+        {{ col | titlecase }}
+      </th>
+      <th>Action</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr *ngFor="let item of list; let i = index">
+      <td *ngFor="let col of columns">
+        <ng-container *ngIf="col == 'address'">
+          <ng-container *ngFor="let item of item[col]">{{
+            item.fullAddress
+          }}</ng-container>
+        </ng-container>
+        {{ col == 'address' ? '' : item[col] }}
+      </td>
+      <td>
+        <button (click)="editRow(i)">Edit</button>
+
+        <button (click)="deleteRow(i)">Delete</button>
+      </td>
+    </tr>
+  </tbody>
+</table>

@@ -1,0 +1,8 @@
+<div *ngIf="!isList()">
+  <app-table [row]="row" (newEmit)="newItem = $event"></app-table>
+
+  <app-form (childEmit)="row = $event" [row]="newItem"></app-form>
+
+  <a href="jaavscript:void(0)" (click)="gotToList()"> to List</a>
+</div>
+<router-outlet> </router-outlet>
